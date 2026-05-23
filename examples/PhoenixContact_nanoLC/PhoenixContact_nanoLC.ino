@@ -1,7 +1,10 @@
 /*
 
-  PhoenixContact_nanoLC.pde - example using ModbusMaster library
+  PhoenixContact_nanoLC.ino - example using ModbusMaster library
   to communicate with PHOENIX CONTACT nanoLine controller.
+
+  Target slave vendor: Phoenix Contact
+  Target slave model: nanoLine / nanoLC controller
 
   Library:: ModbusMaster
   Author:: Doc Walker <4-20ma@wvfans.net>
@@ -140,4 +143,3 @@ void loop()
   // data is available via nanoLC.getResponseBuffer(0..7)
   nanoLC.readInputRegisters(NANO_AI(0), 8);
 }
-

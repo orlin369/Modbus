@@ -1,11 +1,14 @@
 /*
 
-  RS485_HalfDuplex.pde - example using ModbusMaster library to communicate
+  RS485_HalfDuplex.ino - example using ModbusMaster library to communicate
   with EPSolar LS2024B controller using a half-duplex RS485 transceiver.
 
   This example is tested against an EPSolar LS2024B solar charge controller.
   See here for protocol specs:
   http://www.solar-elektro.cz/data/dokumenty/1733_modbus_protocol.pdf
+
+  Target slave vendor: EPSolar / EPEver
+  Target slave model: LS2024B solar charge controller
 
   Library:: ModbusMaster
   Author:: Marius Kintel <marius at kintel dot net>
@@ -74,8 +77,6 @@ bool state = true;
 void loop()
 {
   uint8_t result;
-  uint16_t data[6];
-  
   // Toggle the coil at address 0x0002 (Manual Load Control)
   result = node.writeSingleCoil(0x0002, state);
   state = !state;
@@ -87,12 +88,11 @@ void loop()
     Serial.print("Vbatt: ");
     Serial.println(node.getResponseBuffer(0x04)/100.0f);
     Serial.print("Vload: ");
-    Serial.println(node.getResponseBuffer(0xC0)/100.0f);
+    Serial.println(node.getResponseBuffer(0x0C)/100.0f);
     Serial.print("Pload: ");
     Serial.println((node.getResponseBuffer(0x0D) +
-                    node.getResponseBuffer(0x0E) << 16)/100.0f);
+                    ((uint32_t)node.getResponseBuffer(0x0E) << 16))/100.0f);
   }
 
   delay(1000);
 }
-

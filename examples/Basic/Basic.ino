@@ -1,6 +1,12 @@
 /*
 
-  Basic.pde - example using ModbusMaster library
+  Basic.ino - example using ModbusMaster library
+
+  Target slave vendor: Any Modbus RTU vendor
+  Target slave model: Any slave with writable holding registers
+  Register map note: this sketch writes registers 0 and 1, then reads six
+  holding registers from address 2. Use only against a test slave or simulator
+  until you have checked the target device manual.
 
   Library:: ModbusMaster
   Author:: Doc Walker <4-20ma@wvfans.net>
