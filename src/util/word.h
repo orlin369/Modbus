@@ -43,9 +43,9 @@ This header file provides utility functions for manipulating words.
     @param uint32_t ww (0x00000000..0xFFFFFFFF)
     @return low word of input (0x0000..0xFFFF)
 */
-static inline uint16_t lowWord(uint32_t ww)
+static inline constexpr uint16_t lowWord(uint32_t ww)
 {
-  return (uint16_t) ((ww) & 0xFFFF);
+  return static_cast<uint16_t>(ww & 0xFFFF);
 }
 
 
@@ -55,9 +55,9 @@ static inline uint16_t lowWord(uint32_t ww)
     @param uint32_t ww (0x00000000..0xFFFFFFFF)
     @return high word of input (0x0000..0xFFFF)
 */
-static inline uint16_t highWord(uint32_t ww)
+static inline constexpr uint16_t highWord(uint32_t ww)
 {
-  return (uint16_t) ((ww) >> 16);
+  return static_cast<uint16_t>(ww >> 16);
 }
 
 
