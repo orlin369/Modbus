@@ -1,6 +1,7 @@
 # ModbusMaster
 
 Arduino library for communicating with Modbus RTU slaves over RS232 or RS485.
+It can act as both a Modbus RTU master and a Modbus RTU slave.
 
 ## Features
 
@@ -11,6 +12,8 @@ Arduino library for communicating with Modbus RTU slaves over RS232 or RS485.
 - Mask-write registers.
 - Read/write multiple registers in one transaction.
 - Optional callbacks for RS485 driver-enable and receiver-enable control.
+- Serve local coils, discrete inputs, holding registers, and input registers as
+  a Modbus RTU slave.
 
 ## Installation
 
@@ -29,6 +32,8 @@ ModbusMaster/
 ```
 
 ## Basic Use
+
+Master:
 
 ```cpp
 #include <ModbusMaster.h>
@@ -54,6 +59,30 @@ void loop()
 }
 ```
 
+Slave:
+
+```cpp
+#include <ModbusSlave.h>
+
+ModbusSlave slave;
+bool coils[8];
+uint16_t holdingRegisters[16];
+
+void setup()
+{
+  Serial1.begin(9600);
+  slave.begin(10, Serial1);
+  slave.configureCoils(coils, 8);
+  slave.configureHoldingRegisters(holdingRegisters, 16);
+}
+
+void loop()
+{
+  holdingRegisters[0]++;
+  slave.poll();
+}
+```
+
 See the sketches in `examples/` for complete usage.
 
 ## Examples
@@ -63,6 +92,7 @@ See the sketches in `examples/` for complete usage.
 | `Basic` | Any Modbus RTU vendor | Test slave or simulator | Minimal read/write flow. |
 | `RS485_HalfDuplex` | EPSolar / EPEver | LS2024B solar charge controller | MAX485-style direction control callbacks. |
 | `ModbusScanner` | Any Modbus RTU vendor | Unknown slave device | Scan slave IDs for devices that answer a probe read. |
+| `ModbusSlaveSimulator` | This Arduino sketch | Modbus RTU simulator | Serve local Arduino arrays as a Modbus RTU slave. |
 | `ReadHoldingRegisters` | Wiren Board | WB-MIR v3 | Raw holding-register inspection template. |
 | `WriteRelayCoils` | ComWinTop | CWT-MB308V | Relay/digital-output coil write template. |
 | `SolarInverterReader` | MarsRock | G2 SUN Series grid-tie inverter | Inverter telemetry template. |

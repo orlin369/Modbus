@@ -7,6 +7,7 @@
 #######################################
 
 ModbusMaster	KEYWORD1
+ModbusSlave	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -20,6 +21,7 @@ begin	KEYWORD2
 idle	KEYWORD2
 preTransmission	KEYWORD2
 postTransmission	KEYWORD2
+setFrameTimeout	KEYWORD2
 
 getResponseBuffer	KEYWORD2
 clearResponseBuffer	KEYWORD2
@@ -31,6 +33,15 @@ sendBit	KEYWORD2
 send	KEYWORD2
 available	KEYWORD2
 receive	KEYWORD2
+configureCoils	KEYWORD2
+configureDiscreteInputs	KEYWORD2
+configureHoldingRegisters	KEYWORD2
+configureInputRegisters	KEYWORD2
+getCoil	KEYWORD2
+setCoil	KEYWORD2
+getHoldingRegister	KEYWORD2
+setHoldingRegister	KEYWORD2
+poll	KEYWORD2
 
 readCoils	KEYWORD2
 readDiscreteInputs	KEYWORD2
@@ -57,3 +68,5 @@ ku8MBInvalidSlaveID	LITERAL1
 ku8MBInvalidFunction	LITERAL1
 ku8MBResponseTimedOut	LITERAL1
 ku8MBInvalidCRC	LITERAL1
+ku8MBNoRequest	LITERAL1
+ku8MBFrameTooLarge	LITERAL1

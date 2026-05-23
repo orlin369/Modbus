@@ -1,11 +1,13 @@
 {
   "name": "ModbusMaster",
-  "version": "2.1.0",
-  "description": "Arduino Modbus RTU master library for RS232 and RS485 networks.",
+  "version": "2.2.0",
+  "description": "Arduino Modbus RTU master and slave library for RS232 and RS485 networks.",
   "keywords": [
     "arduino",
     "modbus",
     "modbus-rtu",
+    "modbus-master",
+    "modbus-slave",
     "rs232",
     "rs485",
     "serial",
@@ -29,12 +31,14 @@
   "frameworks": "arduino",
   "platforms": "*",
   "headers": [
-    "ModbusMaster.h"
+    "ModbusMaster.h",
+    "ModbusSlave.h"
   ],
   "examples": [
     "examples/Basic/Basic.ino",
     "examples/BatteryBmsReader/BatteryBmsReader.ino",
     "examples/ModbusScanner/ModbusScanner.ino",
+    "examples/ModbusSlaveSimulator/ModbusSlaveSimulator.ino",
     "examples/PhoenixContact_nanoLC/PhoenixContact_nanoLC.ino",
     "examples/RS485_HalfDuplex/RS485_HalfDuplex.ino",
     "examples/ReadHoldingRegisters/ReadHoldingRegisters.ino",

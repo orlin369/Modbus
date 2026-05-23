@@ -17,6 +17,8 @@ This changelog is reconstructed from the local Git history.
 - Added more practical Modbus RTU example sketches.
 - Added slave vendor/model metadata to the examples and README example table.
 - Modernized the library source for C++11-style Arduino cores.
+- Added `ModbusSlave` for serving local coils and registers as a Modbus RTU
+  slave.
 
 ## 2.0.1 - 2016-09-23
 
