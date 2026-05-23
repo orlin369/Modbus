@@ -1,58 +1,67 @@
-Contributing
-============
+# Contributing
 
-- Fork, then clone the repo:
-    ````
-    git clone git@github.com:your_username/ModbusMaster.git
-    ````
+Contributions are welcome when they keep the library small, portable, and easy
+to use from the Arduino IDE.
 
-- Create a topic branch from where you want to base your work
-    - This is usually the master branch
-    - Only target release branches if you are certain your fix must be on that branch
-    - To quickly create a topic branch based on master; `git checkout -b fix/master/my_contribution master`. Please avoid working directly on the `master` branch.
+## License
 
-- Follow the [style guide](https://github.com/4-20ma/ModbusMaster/blob/master/STYLE.md)
+This project is licensed under the Apache License, Version 2.0. By submitting a
+pull request, patch, issue comment with code, or other intentional contribution,
+you agree that your contribution is provided under the same Apache-2.0 terms
+unless you clearly mark it as "Not a Contribution".
 
-- Test your change
+The license allows use, modification, redistribution, and sublicensing, but
+contributors must preserve copyright, license, patent, trademark, and
+attribution notices required by the license.
 
-    ```` bash
-    $ make
-    ````
+## What to Contribute
 
-    Project must build successfully using `make` in order for contribution to be considered.
+- Bug fixes in the Modbus RTU transaction code.
+- Compatibility fixes for Arduino boards and cores.
+- Small API improvements that do not break existing sketches.
+- Practical examples for common RS232/RS485 Modbus devices.
+- Documentation fixes that make wiring, register usage, or behavior clearer.
 
-- Make commits of logical units
-    - Check for unnecessary whitespace with `git diff --check` before committing
-    - Each commit should represent one atomic change and should stand on its own
-    - Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+## Before Sending Changes
 
-- Push to your fork and [submit a pull request](https://github.com/4-20ma/ModbusMaster/compare/)
-- [Code of conduct](https://github.com/4-20ma/ModbusMaster/blob/master/CODE_OF_CONDUCT.md)
+- Keep the modern Arduino library layout: `src/`, `examples/`,
+  `library.properties`, `keywords.txt`, `README.md`, and `LICENSE`.
+- Put each example in its own folder with a matching `.ino` file name.
+- Avoid board-specific code in the library itself when a sketch can handle it.
+- Keep examples explicit about baud rate, slave ID, serial port, and register
+  addresses.
+- Do not commit generated build output, IDE caches, or local environment files.
 
-### Labels
+## Testing
 
-Project maintainers assign labels to Issues and Pull Requests (PRs) to categorize, prioritize, and provide status. The following guidelines and conventions are used in this project:
+At minimum, compile the changed examples in Arduino IDE or Arduino CLI for one
+AVR board and one modern 32-bit board when available.
 
-#### Type
+Useful checks:
 
-- `Bug` - existing code does not behave as described in the project documentation; _requires_ clear test case and be _reproducible_ by project maintainer
-- `Enhancement` - improvement to an existing feature (Issue or Pull Request)
-- `Feature Requst` - new functionality; _requires_ a well-written, clear user story (Issue)
-- `Maintenance` - minor administrative change that does not provide enhancement or introduce new feature
-- `Question` - self-explanatory
+```sh
+arduino-cli compile --fqbn arduino:avr:uno examples/Basic
+arduino-cli compile --fqbn arduino:avr:mega examples/RS485_HalfDuplex
+```
 
-#### Priority
+If you cannot run a hardware test, describe what was tested and what was not.
 
-- `Low` - default priority; new issues generally start here
-- `Medium` - issues are escalated, depending on severity of the issue
-- `High` - issues are escalated, depending on severity of the issue
-- `Critical` - these issues are to be resolved ahead of any other
+## Example Guidelines
 
-#### Status
+Good examples should:
 
-- `Abandoned` - issue/PR closed due to inactivity
-- `Blocked` - issue/PR will not be resolved/merged (some projects label these items as `wontfix`; include explanation in issue/PR)
-- `In Progress` - issue has been assigned and is actively being addressed; re-label issue `On Hold` with explanation if there will be a significant delay
-- `Maintainer Review Needed` - last step prior to merge; PR passes continuous integration tests and is able to be cleanly merged - awaiting review for style, code cleanliness, etc.
-- `On Hold` - implementation delayed; provide explanation in issue/PR
-- `Pending Contributor Response` - issue/PR closed after 14 days of inactivity (re-label `Abandoned` at closure)
+- Define all device-specific register addresses near the top.
+- Print decoded values with units.
+- Check `ku8MBSuccess` before using response data.
+- Show RS485 direction-control callbacks when half-duplex hardware is involved.
+- Avoid hidden writes to real equipment unless the sketch name and comments make
+  that behavior obvious.
+
+## Pull Request Notes
+
+Please include:
+
+- The board or core used for compilation.
+- The Modbus device or simulator used for runtime testing, if any.
+- The serial settings: baud rate, parity, stop bits when relevant.
+- A short description of user-visible behavior changes.

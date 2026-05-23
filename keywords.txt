@@ -17,11 +17,20 @@ highWord	KEYWORD2
 LONG	KEYWORD2
 
 begin	KEYWORD2
+idle	KEYWORD2
+preTransmission	KEYWORD2
+postTransmission	KEYWORD2
 
 getResponseBuffer	KEYWORD2
 clearResponseBuffer	KEYWORD2
 setTransmitBuffer	KEYWORD2
 clearTransmitBuffer	KEYWORD2
+beginTransmission	KEYWORD2
+requestFrom	KEYWORD2
+sendBit	KEYWORD2
+send	KEYWORD2
+available	KEYWORD2
+receive	KEYWORD2
 
 readCoils	KEYWORD2
 readDiscreteInputs	KEYWORD2

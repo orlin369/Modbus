@@ -1,0 +1,44 @@
+{
+  "name": "ModbusMaster",
+  "version": "2.1.0",
+  "description": "Arduino Modbus RTU master library for RS232 and RS485 networks.",
+  "keywords": [
+    "arduino",
+    "modbus",
+    "modbus-rtu",
+    "rs232",
+    "rs485",
+    "serial",
+    "industrial"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orlin369/Modbus.git"
+  },
+  "authors": [
+    {
+      "name": "Doc Walker"
+    },
+    {
+      "name": "Orlin Dimitrov",
+      "maintainer": true
+    }
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/orlin369/Modbus",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "headers": [
+    "ModbusMaster.h"
+  ],
+  "examples": [
+    "examples/Basic/Basic.ino",
+    "examples/BatteryBmsReader/BatteryBmsReader.ino",
+    "examples/ModbusScanner/ModbusScanner.ino",
+    "examples/PhoenixContact_nanoLC/PhoenixContact_nanoLC.ino",
+    "examples/RS485_HalfDuplex/RS485_HalfDuplex.ino",
+    "examples/ReadHoldingRegisters/ReadHoldingRegisters.ino",
+    "examples/SolarInverterReader/SolarInverterReader.ino",
+    "examples/WriteRelayCoils/WriteRelayCoils.ino"
+  ]
+}
